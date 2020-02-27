@@ -13,7 +13,7 @@ function createUserCards(data){
 
 //function to generate html and append cards to the gallery DIV
 function appendCard(index, item){
-     $gallery.append(`<div class="card">\
+     const $card = $(`<div class="card">\
     <div class="card-img-container">\
     <img class="card-img" src="${item.picture.large}" alt="profile picture">\
     </div>\
@@ -22,15 +22,16 @@ function appendCard(index, item){
         <p class="card-text">${item.email}</p>\
         <p class="card-text cap">${item.location.city}</p>\
     </div>\
-</div>`)
-$('.card').on('click', $('.card'), function(e){
-    console.log($(this));
+</div>`);
+$card.on('click', function(e){
     createModal(item)
     });
+$gallery.append($card);
 };
 
+
 function createModal(item){
-   $modal = $('body').append(`<div class="modal-container">
+   $modal = $(`<div class="modal-container">
     <div class="modal">
         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
         <div class="modal-info-container">
@@ -52,6 +53,7 @@ function createModal(item){
     </div>
 </div>`
 )
+$('body').append($modal);
 $('#modal-close-button').on('click', function(event){
     console.log('clicked');
     $target = event.target
