@@ -4,16 +4,21 @@ const $cardNoJs = $('#card-no-js');
 const usersAPI = 'https://randomuser.me/api/?results=12';
 $cardNoJs.hide();
 
-//function to iterate through array and create cards. 
+
+//AJAX request as outlined in the Random User API. getJSON could also work here
+$.ajax({
+    url: 'https://randomuser.me/api/?results=12',
+    dataType: 'json',
+    success: function(data) {
+//FUNCTION to iterate through array and create cards. 
 function createUserCards(data){
-    $data = data;
     $.each(data, function(index, item){
         appendCard(index, item);
     })
 
 }
 
-//function to generate html and append cards to the gallery DIV
+//FUNCTION called in .each to generate html and append cards to the gallery DIV
 function appendCard(index, item){
      const $card = $(`<div class="card">\
     <div class="card-img-container">\
@@ -24,16 +29,16 @@ function appendCard(index, item){
         <p class="card-text">${item.email}</p>\
         <p class="card-text cap">${item.location.city}</p>\
     </div>\
-</div>`);
-//creates index for next/back modal buttons
-   $card['index'] = index;
+   </div>`);
+//creates modal passing in information from clicked card
    $card.on('click', function(e){
     createModal(index, item)
     });
+//appends newly created card and click handler
   $gallery.append($card);
 };
 
-//creates modal and click handlers 
+//FUNCTION called in appendCard creates modal and click handlers for this modal
 function createModal(index, item){
    $modal = $(`<div class="modal-container">
     <div class="modal">
@@ -55,27 +60,24 @@ function createModal(index, item){
         <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
         <button type="button" id="modal-next" class="modal-next btn">Next</button>
     </div>
-</div>`
-)
-      console.log($data.results[0]);
-//
+   </div>`);
+//click handlers to close and move forward and back;
 $('body').append($modal);
 $('.modal-close-btn').on('click', function(event){
     $modal.hide();
     });
-$('#modal-prev').on('click', function(event){
+//refernces location through .each generated 'index';
+$('.modal-prev').on('click', function(event){
         $modal.hide();
+        const loc = (index -1);
+        createModal(loc, data.results[loc]);
         });
-        const $loc = (index -1);
-        const $new = createModal($loc, $cardData[$loc]);
+$('.modal-next').on('click', function(event){
+       $modal.hide();
+       const loc = (index +1);
+       createModal(loc, data.results[loc]);
+       });
 };
-
-
-//AJAX request as outlined in the Random User API. getJSON could also work here
-$.ajax({
-    url: 'https://randomuser.me/api/?results=12',
-    dataType: 'json',
-    success: function(data) {
-      createUserCards(data.results);
-    }
+createUserCards(data.results);
+    }    
   });
