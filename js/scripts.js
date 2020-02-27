@@ -6,9 +6,11 @@ $cardNoJs.hide();
 
 //function to iterate through array and create cards. 
 function createUserCards(data){
+    $data = data;
     $.each(data, function(index, item){
         appendCard(index, item);
     })
+
 }
 
 //function to generate html and append cards to the gallery DIV
@@ -23,14 +25,16 @@ function appendCard(index, item){
         <p class="card-text cap">${item.location.city}</p>\
     </div>\
 </div>`);
-$card.on('click', function(e){
-    createModal(item)
+//creates index for next/back modal buttons
+   $card['index'] = index;
+   $card.on('click', function(e){
+    createModal(index, item)
     });
-$gallery.append($card);
+  $gallery.append($card);
 };
 
-
-function createModal(item){
+//creates modal and click handlers 
+function createModal(index, item){
    $modal = $(`<div class="modal-container">
     <div class="modal">
         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
@@ -43,7 +47,7 @@ function createModal(item){
             <p class="modal-text">${item.phone}</p>
             <p class="modal-text">${item.location.street.number} ${item.location.street.name} ${item.location.city} ${item.location.state} ${item.location.postcode}</p>
             <p class="modal-text">Age: ${item.dob.age}</p>
-        </div>
+               </div>
     </div>
 
     // IMPORTANT: Below is only for exceeds tasks 
@@ -53,15 +57,19 @@ function createModal(item){
     </div>
 </div>`
 )
+      console.log($data.results[0]);
+//
 $('body').append($modal);
-$('#modal-close-button').on('click', function(event){
-    console.log('clicked');
-    $target = event.target
-    $target.hide();
+$('.modal-close-btn').on('click', function(event){
+    $modal.hide();
     });
+$('#modal-prev').on('click', function(event){
+        $modal.hide();
+        });
+        const $loc = (index -1);
+        const $new = createModal($loc, $cardData[$loc]);
 };
 
-//event handler for modal window popups
 
 //AJAX request as outlined in the Random User API. getJSON could also work here
 $.ajax({
