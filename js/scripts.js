@@ -15,32 +15,41 @@ function createUserCards(data){
     $.each(data, function(index, item){
         appendCard(index, item);
     })
-
+}
+//FUNCTION to check for arabic characters and append 'AR' class
+function isAr(item){
+    const str = item.name.first;
+    if (str.charCodeAt(0) > 1535 && str.charCodeAt(0) < 1792){
+        console.log(str)
+        $(`#${str}`).addClass('ar')
+    } 
 }
 
 //FUNCTION called in .each to generate html and append cards to the gallery DIV
 function appendCard(index, item){
-     const $card = $(`<div class="card">\
-    <div class="card-img-container">\
-    <img class="card-img" src="${item.picture.large}" alt="profile picture">\
-    </div>\
-    <div class="card-info-container">\
-        <h3 id="name" class="card-name cap">${item.name.first} ${item.name.last}</h3>\
-        <p class="card-text">${item.email}</p>\
-        <p class="card-text cap">${item.location.city}</p>\
-    </div>\
-   </div>`);
+    const $card = $(`<div class="card" id="${item.name.first}">\
+        <div class="card-img-container">\
+        <img class="card-img" src="${item.picture.large}" alt="profile picture">\
+        </div>\
+        <div class="card-info-container">\
+            <h3 id="name" class="card-name cap">${item.name.first} ${item.name.last}</h3>\
+            <p class="card-text">${item.email}</p>\
+            <p class="card-text cap">${item.location.city}</p>\
+        </div>\
+    </div>`);
 //creates modal passing in information from clicked card
    $card.on('click', function(e){
     createModal(index, item)
     });
 //appends newly created card and click handler
   $gallery.append($card);
+  //checks if text is arabic, if so adds an 'ar' class
+  isAr(item)
 };
 
 //FUNCTION called in appendCard creates modal and click handlers for this modal
 function createModal(index, item){
-   $modal = $(`<div class="modal-container">
+   $modal = $(`<div class="modal-container" id=${item.name.first}>
     <div class="modal">
         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
         <div class="modal-info-container">
@@ -63,6 +72,7 @@ function createModal(index, item){
    </div>`);
 //click handlers to close and move forward and back;
 $('body').append($modal);
+isAr(item)
 $('.modal-close-btn').on('click', function(event){
     $modal.hide();
     });
@@ -81,3 +91,19 @@ $('.modal-next').on('click', function(event){
 createUserCards(data.results);
     }    
   });
+
+/*======================
+  Search markup: 
+
+  You can use the commented out markup below as a template
+  for your search feature, but you must use JS to create and 
+  append it to `search-container` div.
+
+  IMPORTANT: Altering the arrangement of the markup and the 
+  attributes used may break the styles or functionality.
+
+  <form action="#" method="get">
+      <input type="search" id="search-input" class="search-input" placeholder="Search...">
+      <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+  </form>
+*/

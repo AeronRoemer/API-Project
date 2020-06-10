@@ -119,6 +119,9 @@ header h1 {
     text-transform: capitalize;
 }
 
+.ar .card-info-container{
+    text-align: right;
+}
 
 /* ===================================== 
    Modal
