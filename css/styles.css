@@ -1,7 +1,7 @@
 /* ===================================== 
    Public API Request
 ======================================== */
-
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 * {
@@ -121,6 +121,7 @@ header h1 {
 
 .ar .card-info-container{
     text-align: right;
+    font-family: 'Almarai', sans-serif;
 }
 
 /* ===================================== 

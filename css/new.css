@@ -1,0 +1,98 @@
+/* ===================================== 
+   FONT IMPORTS
+======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+/* ===================================== 
+   RESETS
+======================================== */
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+/* ===================================== 
+   BODY STYLES
+======================================== */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(253, 240, 232);
+    font-size: 62.5%; /*To get a 10px base font*/
+}
+
+.header {
+    margin: 2rem;
+    text-align: center;
+    animation-name: moveInTop;
+    animation-duration: 1.5s;
+    font-size: 2rem;
+}
+
+.gallery {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.ar .employee-info{
+    text-align: right;
+}
+/* ===================================== 
+   CARD STYLES
+======================================== */
+.card {
+    background-color: #fff;
+    border-radius: 1rem;
+    width: 25rem;
+    margin: 1rem;
+    padding: .75rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
+  }
+.card__img-container {
+    display: inline-block;
+    padding: 1.5rem
+}
+
+.card__profile-pic {
+    border-radius: 7.5rem;
+    margin: auto 0;
+    width: 5.5rem;
+}
+
+.card__employee-info {
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+    padding: auto 0;
+}
+.card__employee-info--name{
+    font-size: 1.5rem;
+}
+.ar {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* ===================================== 
+   HEADER ANIMATION AND STYLES
+======================================== */
+
+@keyframes moveInTop { /* browsers work best with opacity and transform */
+    0% {
+        opacity: 0;
+        transform: translateY(-6rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
