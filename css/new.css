@@ -3,6 +3,7 @@
 ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
 /* ===================================== 
    RESETS
@@ -17,24 +18,49 @@
 ======================================== */
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: rgb(253, 240, 232);
+    background-color:hsl(0, 0%, 17%);
     font-size: 62.5%; /*To get a 10px base font*/
 }
 
 .header {
-    margin: 2rem;
-    text-align: center;
+    background-image: url('../img/header-skyline.png');
+    height: 15rem;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 2rem;
+    box-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.2);
+}
+.header__text{
     animation-name: moveInTop;
     animation-duration: 1.5s;
-    font-size: 2rem;
+    backface-visibility: hidden;
+    width: 100;
+    font-size: 10vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: rgba(255, 255, 255, .9);
+    padding-top: vh;
 }
-
+.header__container{
+    margin: 0rem auto;
+    height: 18rem;
+}
+.header__container--gradient{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background-image: linear-gradient(to right bottom, rgba(246, 177, 166), rgba(239, 188, 122));
+}
 .gallery {
-    margin: auto;
+    margin: 1.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .ar .employee-info{
@@ -45,16 +71,17 @@ body {
 ======================================== */
 .card {
     background-color: #fff;
-    border-radius: 1rem;
-    width: 25rem;
-    margin: 1rem;
-    padding: .75rem;
+    border-radius: .5rem;
+    margin: .75rem;
+    padding: .5rem;
     display: flex;
     align-items: center;
+    flex: 0 0 22rem;
     flex-direction: row;
 }
 .card:hover {
     transform: translateY(-3px);
+    cursor: pointer;
     box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
   }
 .card__img-container {
@@ -77,6 +104,12 @@ body {
 .card__employee-info--name{
     font-size: 1.5rem;
 }
+.card__employee-info--more{
+    font-weight: 700;
+    font-size: .8rem;
+    display: inline;
+    text-transform: uppercase;
+}
 .ar {
     flex-direction: row-reverse;
     text-align: right;
@@ -96,3 +129,18 @@ body {
         transform: translateY(0);
     }
 }
+
+/* @media all and (min-width: 880px) {
+    .header__text{
+        animation-name: moveInTop;
+        animation-duration: 1.5s;
+        backface-visibility: hidden;
+        width: 100;
+        font-size: 6.5rem;
+        font-family: 'Oswald', sans-serif;
+        text-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.2);
+        text-align: center;
+        color: white;
+        padding-top: 3rem;
+    }
+  } */

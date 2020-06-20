@@ -1,7 +1,7 @@
 //Variables and No-Script-Warning Card
 const $gallery = $("#gallery");
 const $cardNoJs = $('#card-no-js');
-const usersAPI = 'https://randomuser.me/api/?results=12';
+const usersAPI = 'https://randomuser.me/api/?results=18';
 $cardNoJs.hide();
 
 //AJAX request as outlined in the Random User API. getJSON could also work here
@@ -36,7 +36,7 @@ function createUserCards(data){
             <div class="card__employee-info">\
                 <h3 id="name" class="card__employee-info--name">${item.name.first} ${item.name.last}</h3>\
                 <p class="card__employee-info--email">${item.email}</p>\
-                <p class="card__employee-info--location">${item.location.city}</p>\
+                <p class="card__employee-info--location">${item.location.city}, ${item.location.country}</p>\
             </div>\
         </div>`);
         //creates modal passing in information from clicked card
