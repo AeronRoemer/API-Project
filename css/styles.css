@@ -1,267 +1,222 @@
 /* ===================================== 
-   Public API Request
+   FONT IMPORTS
 ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-* {
-	box-sizing: border-box;
-}
 
-html, body {
-    width: 100%;
-    max-width: 100%;
-}
-
-body {
-    font-family: "Nunito", sans-serif;
-    text-align: center;
-    background: rgba(235, 235, 235, 0.9);
-}
-
-header {
-    padding: 15px 5px 5px;
-}
-
-.header-inner-container {
-    max-width: 1180px;
-    margin: auto;
-}
-
-header h1 {
-    font-size: 1.25em;
-    color: rgba(50, 50, 50, 0.9);
-    margin-top: 35px;
-}
-
-.search-input {
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(200, 200, 200, 0.9);
-    border-radius: 0.25rem 0 0 0.25rem ;
-    max-width: 20rem;
-    transition: .4s ease-out;
-    outline: none;
-}
-
-.search-input:active, .search-input:hover, .search-input:focus {
-    border: 1px solid rgba(50, 50, 50, 0.9);
-}
-
-.search-submit {
-    cursor: pointer;
-    height: 33px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0 0.25rem 0.25rem 0;
-    border: 1px solid rgba(200, 200, 200, 0.9);
-    transition: .4s ease-out;
-    outline: none;
-}
-
-.search-submit:active, .search-submit:hover, .search-submit:focus {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(50, 50, 50, 0.9);
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Oswald:wght@600&display=swap');
 
 /* ===================================== 
-   Gallery
+   RESETS
 ======================================== */
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+}
+*::before, *::after {
+    box-sizing: border-box;
+  }
+/* ===================================== 
+   BODY STYLES
+======================================== */
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    background-color:rgb(43, 43, 43);
+    font-size: 62.5%; /*To get a 10px base font*/
+}
 
+.header {
+    background-image: url('../img/header-skyline.png');
+    height: 15rem;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 2rem;
+    box-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.2);
+}
+.header__text{
+    animation-name: moveInTop;
+    animation-duration: 1.5s;
+    backface-visibility: hidden;
+    width: 100;
+    font-size: 10vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: rgba(255, 255, 255, .9);
+}
+.header__container{
+    margin: 0rem auto;
+    height: 18rem;
+}
+.header__container--gradient{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background-image: linear-gradient(to right bottom, rgb(246, 177, 166), rgb(239, 188, 122));
+}
 .gallery {
+    margin: 1.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-}
-  
-.card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    cursor: pointer;
-    width: 100%;
-    max-width: 360px;
-    margin: 10px 10px 20px;
-    padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
-    transition: .4s ease-out;
-    overflow: hidden;
 }
 
-.card-img {
-    width: 95px;
-    margin: 10px 15px auto 10px;
-    border-radius: 50%;
-}
-
-.card-info-container {
-    text-align: left;
-}
-
-.card-name {
-    margin: 20px auto 0;
-}
-
-.card-text {
-    font-size: 0.9em;
-    color: rgba(50, 50, 50, 0.7);
-    margin: 7px auto;
-    transition: .4s ease-out;
-}
-
-.cap {
-    text-transform: capitalize;
-}
-
-.ar .card-info-container{
+.ar .employee-info{
     text-align: right;
-    font-family: 'Almarai', sans-serif;
 }
-
 /* ===================================== 
-   Modal
+   CARD STYLES
 ======================================== */
-
-.modal-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
+.card {
+    background-color: #fff;
+    border-radius: .5rem;
+    margin: .75rem;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    flex: 0 0 22rem;
+    flex-direction: row;
 }
-
-.modal {
-    position: relative;
-    width: 95%;
-    max-width: 420px;
-    min-height: 415px;
-    margin: 10px auto auto;
-    padding-bottom: 15px;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 0.25em;
-    border: 1px solid rgba(100, 100, 100, 0.3);
-    transition: .4s ease-out;
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+.card:hover {
+    transform: translateY(-3px);
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(0, 0, 0, 0.8);
-    outline: none;
-    border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
+  }
+.card__img-container {
+    display: inline-block;
+    padding: 1.5rem
 }
 
-.modal-img {
-    width: 150px;
-    margin-top: 35px;
-    border-radius: 50%;
+.card__profile-pic {
+    border-radius: 7.5rem;
+    margin: auto 0;
+    width: 5.5rem;
 }
 
-.modal-name {
+.card__employee-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    padding: auto 0;
+}
+h3 {
+    font-size: 1.75rem;
     margin-bottom: 5px;
 }
+.card__employee-info--more{
+    font-weight: 700;
+    font-size: .8rem;
+    display: inline;
+    text-transform: uppercase;
+}
+.ar {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+/* ===================================== 
+   MODAL CSS
+======================================== */
+.modal__container{
+    height:100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(43, 43, 43, 0.9);
+    z-index: 3;
+}
+.modal{
+    text-align: center;
+    width: 60%;
+    min-height: 400px;
+    background-color: white;
+    position: relative;
+    margin: 10vh auto;
+    padding: 3%;
+    border-radius: 5px;
+    box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+.modal__close-btn{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 7px;
+}
+.modal__info-container{
+    display: block;
+}
+.modal__img{
+    display: block;
+    margin: 0 auto 30px auto;
+    border-radius: 75px;
+}
+.modal__name{
+    text-transform: uppercase;
+}
+.modal__text{
+    font-size: 1.1rem;
+    padding: 2px;
+}
+hr{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 
-.modal-text {
-    color: rgba(50, 50, 50, 0.7);
+button{
+    border: 2px;
+    background-color: rgb(187, 187, 187);
+    border-radius: 3px;
     margin: 10px;
+    padding: 5px;
+    display: inline;
+    color: white;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
+button:hover {
+    box-shadow: 0 0 40px 40px rgb(248, 109, 87)inset;
+    cursor: pointer;
+  }
 
-.modal hr {
-    width: 75%;
-    margin: 25px auto 30px;
-    border-color: rgba(200, 200, 200, 0.2);
-}
-
-.modal-btn-container {
+.modal__btn-container{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    width: 95%;
-    max-width: 420px;
-    padding: 10px 15px 15px;;
-    margin: 10px auto auto;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 0.25em;
-    border: 1px solid rgba(100, 100, 100, 0.3);
+}
+.modal__btn-container button{
+    display: flex;
+    margin-top: 20px;
+    padding: 10px 30px;
 }
 
-
-.modal-btn-container .btn {
-    display: inline-block;
-    cursor: pointer;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
-    padding: 0.75em 1.5em;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 0.35em;
-    transition: .4s ease-out;
-    outline: none;
-  }
-  
-
 /* ===================================== 
-   Media Queries
+   HEADER ANIMATION AND STYLES
 ======================================== */
 
-/* ===================================== 
-   Tablet
-======================================== */
-
-@media (min-width: 768px) {
-    .header-inner-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        padding-right: 25px;
-        padding-left: 25px;
+@keyframes moveInTop { /* browsers work best with opacity and transform */
+    0% {
+        opacity: 0;
+        transform: translateY(-6rem);
     }
-
-    .header-text-container {
-        text-align: left;
-    }
-
-    .search-container {
-        margin-top: 25px;
-    }
-
-    .modal {
-        margin-top: 100px;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-
-/* ===================================== 
-   Desktop
-   Hover styles on desktop 
-======================================== */
-
-@media (min-width: 1024px) {
-
-    .card:hover {
-        background: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(50, 50, 50, 0.9);
+@media all and (min-width: 880px) {
+    .modal{
+        width: 40%;
+        min-height: 400px;
+        background-color: white;
+        margin: 10vh auto;
+        padding: 3%;
+        border-radius: 5px;
+        box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
     }
-
-    .card:hover .card-text {
-        color: rgba(25, 25, 25, 1); 
-    }
-
-    .btn:hover {
-        background: rgba(255, 255, 255, 1);
-        color: rgba(25, 25, 25, 1); 
-    }
-}
+  } 

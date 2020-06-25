@@ -6,7 +6,7 @@ $cardNoJs.hide();
 
 //AJAX request as outlined in the Random User API. getJSON could also work here
 $.ajax({
-    url: 'https://randomuser.me/api/?results=12',
+    url: 'https://randomuser.me/api/?results=18',
     dataType: 'json',
     success: function(data) {
 //function to iterate through array and create cards on successful request
@@ -51,42 +51,39 @@ function createUserCards(data){
 
     //FUNCTION called in appendCard creates modal and click handlers for this modal
     function createModal(index, item){
-    $modal = $(`<div class="modal-container" id=${item.name.first}>
+    $modal = $(`<div class="modal__container" id=${item.name.first}>
         <div class="modal">
-            <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-            <div class="modal-info-container">
-                <img class="modal-img" src="${item.picture.large}" alt="profile picture">
+            <button type="button" id="modal__close-btn" class="modal__close-btn"><strong>X</strong></button>
+            <div class="modal__info-container">
+                <img class="modal__img" src="${item.picture.large}" alt="profile picture">
                 <h3 id="name" class="modal-name cap">${item.name.first} ${item.name.last}</h3>
-                <p class="modal-text">${item.email}</p>
-                <p class="modal-text cap">${item.location.city}</p>
+                <p class="modal__text">${item.email}</p>
+                <p class="modal__text cap">${item.location.city}</p>
                 <hr>
-                <p class="modal-text">${item.phone}</p>
-                <p class="modal-text">${item.location.street.number} ${item.location.street.name} ${item.location.city} ${item.location.state} ${item.location.postcode}</p>
-                <p class="modal-text">Age: ${item.dob.age}</p>
+                <p class="modal__text">${item.phone}</p>
+                <p class="modal__text">${item.location.street.number}, ${item.location.street.name}, ${item.location.city} ${item.location.state} ${item.location.postcode}</p>
+                <p class="modal__text">Age: ${item.dob.age}</p>
+            <div class="modal__btn-container">
+                <button type="button" id="modal-prev" class="modal__prev btn">&larr; Prev</button>
+                <button type="button" id="modal-next" class="modal__next btn">Next &rarr;</button>
+            </div>
                 </div>
-        </div>
-
-        <div class="modal-btn-container">
-            <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
-            <button type="button" id="modal-next" class="modal-next btn">Next</button>
         </div>
     </div>`);
        
         $('body').append($modal);
-        //checks and adds arabic class before modal is appended
-        isAr(item)
         
          //click handlers to close and move forward and back;
-        $('.modal-close-btn').on('click', function(event){
+        $('.modal__close-btn').on('click', function(event){
             $modal.hide();
             });
         //refernces location through .each generated 'index';
-        $('.modal-prev').on('click', function(event){
+        $('.modal__prev').on('click', function(event){
                 $modal.hide();
                 const loc = (index -1);
                 createModal(loc, data.results[loc]);
                 });
-        $('.modal-next').on('click', function(event){
+        $('.modal__next').on('click', function(event){
             $modal.hide();
             const loc = (index +1);
             createModal(loc, data.results[loc]);

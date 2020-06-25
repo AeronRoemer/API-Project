@@ -1,16 +1,15 @@
 Random User Generator API Project - based on treehouse courses
-TODO::
--SCREENSHOTS IN README
-RECOLOR/CSS & SASS CHANGES
-README
 
 # EMPLOYEE DIRECTORY
-Created based on project from Teamtreehouse.com.
-If you are also student and  working on this or a similar project, feel free to reach out to me with anyquestions about this code. I've made an effort to include helpful comments and documentation for fellow learners. The CSS contains significant changes to the layout, for those interested.
+This is a jQuery project that makes an API call to https://randomuser.me/, and displays the resulting users. 
+The application starts with a basic HTML document that is shown if the user does not have javascript enabled, and hidden if JS is working. 
+The app should render 18 random user cards, clicking on one of these opens a modal window with more employee information. Some of the employees use Arabic scrpt, these are supported with RTL text. 
 
-## Basic Structure
+![Right to left text on card](/READMEimgs/HomePage.png)
 
-The employee directory calls on a public API that returns random user profiles. Clicking on one of these opens a modal window with more employee information. Some of the employees use Arabic scrpt, these are supported with RTL text. 
+![Right to left text on card](/READMEimgs/Modal.png)
+
+Visit the page at: https://aeronroemer.github.io/Employee-Directory-Display/
 
 ### Concepts Demonstrated
 
@@ -21,11 +20,10 @@ The main technologies and concepts demonstrated in this project are
 * API calls
 * CSS 
 * Localization-Friendly Design
-* !Responsive Design
 
 ## CSS Techniques
 
-* Flex layout design. 
+* Flex layout design, responds to resizing and enables the realignment of Arabic-script blocks. 
 * Animation: Header slide in created using keyframes. CSS animations are much faster to load than jQuery animations.
 * BEM (Block, Element, Modifier) methodology used for naming CSS selectors.
 
@@ -38,27 +36,12 @@ name is in Arabic script. If so, Arabic specific styling rules are
 applied. Functionality could easily be expanded to Kurdish, Farsi, Syriac or
 any of the other numerous RTL scripts. 
 
-![Right to left text on card](/images/SplashImage.png)
+![Right to left text on card](/READMEimgs/LatinArabic.png)
 
-### The typefaces used in the logo were:
-The 'Phrase' text on the logo is based on 'Sidecar' by Fenotype -> https://fenotype.com/. The 'Hunter' text is loosely based on DIN Condensed, an Adobe Font ->https://fonts.adobe.com/. The Neon effect was created in Adobe Illustrator.
+## Header Image
 
-## CSS Queries
-When implemented, images and details will be posted about: 
-
- * Media Queries for mobile/desktop
- * Dark/Light mode 
-
-### Dark/Light Mode
-![Dark Mode](/READMEimages/DarkMode.png)
-![Light Mode](/READMEimages/LightMode.png)
-
-## Mobile/Destop Query
-![Mobile asks user to switch devices](/READMEimages/MediaQuery.png)
-![Full Size Device Displays Correctly](/READMEimages/QueryOK.png)
-## Test Functionality
-
-Visit https://aeronroemer.github.io/Employee-Directory-Display/ to test the functionality of this project. 
+The header image is a comination of a CSS gradient, CSS animation and a photoshop .png file. The original photo was found on https://unsplash.com/. It's a skyline of Chicago taken by Jeff Brown: https://unsplash.com/photos/xOj6_Ha1_R8. 
 
 ### Licsence 
-MIT
+Created based on a project on TeamTreehouse.com
+MIT - other students should feel free to use my CSS or custom images. 
