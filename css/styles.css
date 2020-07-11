@@ -220,3 +220,20 @@ button:hover {
         box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
     }
   } 
+
+  @media all and (max-width: 700px) {  /* can also be a min-resolution*/
+    .header {
+        background-image: url('../img/header-skyline-sm.png');
+        height: 12rem;
+    }
+    .header__container{
+        margin: 0rem auto;
+        height: 12rem;
+    }
+  } 
+
+  @media all and (min-width: 1200px) {  /* can also be a min-resolution*/
+    .header {
+        background-image: url('../img/header-skyline-xl.png');
+    }
+  } 

@@ -26,6 +26,7 @@ The main technologies and concepts demonstrated in this project are
 * Flex layout design, responds to resizing and enables the realignment of Arabic-script blocks. 
 * Animation: Header slide in created using keyframes. CSS animations are much faster to load than jQuery animations.
 * BEM (Block, Element, Modifier) methodology used for naming CSS selectors.
+* Responsive Images - used with media queries. 
 
 ## Localization-Friendly Design
 
